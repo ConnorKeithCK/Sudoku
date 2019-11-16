@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Sudoku!</title>
+</head>
+<body>
+    <div class = "instruction">
+            <h1>How to play</h1>
+            <p>Sudoku is played on a grid of 9 x 9 spaces. Within the rows and columns are 9 “squares” (made up of 3 x 3 spaces). 
+            Each row, column and square (9 spaces each) needs to be filled out with the numbers 1-9, without repeating any numbers within the row,
+            column or square. When you are ready to play, press "PLAY" below!</p>
+            <button id = "button-Play">PLAY</button>
+    </div>
+
+    <div name = "game">
+        <table class = "game-board">
+            <tr class = "row1">
+                <td id = "row1_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row1_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row2">
+                <td id = "row2_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row2_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row3">
+                <td id = "row3_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row3_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row4">
+                <td id = "row4_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row4_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row5">
+                <td id = "row5_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row5_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row6">
+                <td id = "row6_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row6_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row7">
+                <td id = "row7_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row7_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row8">
+                <td id = "row8_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row8_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+            <tr id = "row9">
+                <td id = "row9_cell1"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell2"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell3"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell4"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell5"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell6"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell7"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell8"><input type = "text" maxlength = 1></td>
+                <td id = "row9_cell9"><input type = "text" maxlength = 1></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
