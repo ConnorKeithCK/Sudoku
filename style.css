@@ -1,0 +1,52 @@
+.game-board {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+
+colgroup {
+    border: 3px solid black;
+}
+
+td {
+    border: 1px solid gray;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    height: 4em;
+    width: 2em;
+}
+
+tr:first-child {
+    border-top: 3px solid black;
+}
+
+tr:first-child {
+    border-top: 3px solid black;
+}
+
+tr:nth-child(4) {
+    border-top: 3px solid black;
+}
+
+tr:nth-child(7) {
+    border-top: 3px solid black;
+}
+
+
+td:hover{
+    border: 3px solid lightgreen;
+}
+
+input {
+    text-align: center;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 2em;
+    font-size: 2em;
+    font-weight: bolder;
+}
