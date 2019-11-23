@@ -1,9 +1,12 @@
 .game-board {
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
+    width: 50%;
+    height: 40%;
     border-spacing: 0;
     border-collapse: collapse;
+    table-layout: fixed;
+    overflow: hidden;
 }
 
 
@@ -17,7 +20,10 @@ td {
     padding: 0;
     margin: 0;
     height: 4em;
-    width: 2em;
+    width: 1.5em;
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: blue;
 }
 
 tr:first-child {
@@ -46,7 +52,7 @@ input {
     border: none;
     padding: 0;
     margin: 0;
-    width: 2em;
-    font-size: 2em;
+    width: 1.5em;
+    font-size: 1.5em;
     font-weight: bolder;
 }
