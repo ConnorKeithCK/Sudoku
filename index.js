@@ -68,6 +68,8 @@ class Sudoku {
         this.user_board.length = 0;
     }
 
+
+    // TODO
     solvePuzzle() {
          
       for (var r = 0; r < game_board.rows.length; r++) {
@@ -84,6 +86,8 @@ class Sudoku {
 
     compareBoards() {
 
+        let solved = true;
+
         // Gather all user inputs to the user_board array
         for (var i = 0; i < game_board.rows.length; i++) {
             for (var x = 0; x < game_board.rows[i].cells.length; x++) {
@@ -99,20 +103,21 @@ class Sudoku {
         for (var x = 0; x < this.user_board.length; x++) {
             for (var y = 0; y < this.user_board[x].length; y++) {
                 if (this.user_board[x][y] == this.solution[x][y]) {
-                    if (confirm("You have won, would you like to play again?")) {
-                        this.clearBoard();
-                        return true;
-                    } else {
-                        // they won, but no longer want to play
-                    }
-                    
+                    if (game_board.rows[x].cells[y].className == "incorrect") {
+                        game_board.rows[x].cells[y].className = "";
+                        game_board.rows[x].cells[y].children[0].className = "";
+                    } 
                 } else {
-                    // Change color of wrong cells
-                    return false;
+                    game_board.rows[x].cells[y].className = "incorrect";
+                    game_board.rows[x].cells[y].children[0].className = "incorrect-input";
+                    solved = false;
                 }        
             }
         }
+
+        return solved;
     }
+
 }
 
 validate_button.addEventListener("click", function(clickEvent) {

@@ -56,3 +56,11 @@ input {
     font-size: 1.5em;
     font-weight: bolder;
 }
+
+.incorrect {
+    background-color: rgba(255, 0 , 0, .4);
+}
+
+.incorrect-input {
+    background-color: rgba(255, 0 , 0, 0);
+}
