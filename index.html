@@ -8,7 +8,7 @@
     <title>Sudoku!</title>
 </head>
 <body>
-    <div class = "instruction">
+    <div class = "instruction" id = "instructions">
             <h1>How to play</h1>
             <p>Sudoku is played on a grid of 9 x 9 spaces. Within the rows and columns are 9 “squares” (made up of 3 x 3 spaces). 
             Each row, column and square (9 spaces each) needs to be filled out with the numbers 1-9, without repeating any numbers within the row,
@@ -16,7 +16,11 @@
             <button id = "button-play">PLAY</button>
     </div>
 
-    <div name = "game">
+    <div name = "game" id = "div_game" class = "hidden">
+
+        <button id = "button-validate" class = "hidden">Validate Board</button>
+        <button id = "button-solve" class = "hidden">Solve the puzzle</button>
+
         <table id ="board" class = "game-board">
 
             <colgroup>
@@ -133,8 +137,6 @@
             </tr>
         </table>
 
-        <button id = "button-validate">Validate Board</button>
-        <button id = "button-solve">Solve the puzzle</button>
     </div>
 
 

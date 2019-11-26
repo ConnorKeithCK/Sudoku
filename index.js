@@ -12,6 +12,8 @@ let play_button = document.getElementById("button-play");
 let validate_button = document.getElementById("button-validate");
 let solve_button = document.getElementById("button-solve");
 let inputs = game_board.getElementsByTagName("input");
+let instructions = document.getElementById("instructions");
+let game_div = document.getElementById("div_game");
 let game;
 
 
@@ -55,6 +57,8 @@ class Sudoku {
         []]
     
     constructor() {
+
+        // initialize game board
         for (var i = 0; i < game_board.rows.length; i++) {
             for (var x = 0; x < game_board.rows[i].cells.length; x++) {
                 if (this.boards[i][x] != "") {
@@ -66,21 +70,35 @@ class Sudoku {
 
     clearBoard() {
         this.user_board.length = 0;
+        for (var i = 0; i < game_board.rows.length; i++) {
+            for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                game_board.rows[i].cells[x].innerHTML = "";
+            }
+        }
     }
 
 
     // TODO
     solvePuzzle() {
          
-      for (var r = 0; r < game_board.rows.length; r++) {
-          for (var c = 0; c < game_board.rows[r].cells.length; c++) {
-              if (this.boards[r][c] != "") {
-                    this.user_board[r][c] = game_board.rows[r].cells[c].innerHTML;
-              } else {
-                    this.user_board[r][c] = game_board.rows[r].cells[c].children[0].value;
-              }
-          }
-      }
+        for (var i = 0; i < game_board.rows.length; i++) {
+            for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                if (this.boards[i][x] != "") {
+                    game_board.rows[i].cells[x].innerHTML = this.solution[i][x];
+                } else {
+                    game_board.rows[i].cells[x].children[0].value = this.solution[i][x];
+                }
+            }
+        }
+
+        this.compareBoards();
+
+        if (confirm("You took the easy road, would you like to play again?")) {
+            this.clearBoard();
+            game = new Sudoku();
+        } else {
+            alert("Thanks for playing!");
+        }
 
     }
 
@@ -123,10 +141,16 @@ class Sudoku {
 validate_button.addEventListener("click", function(clickEvent) {
 
 if (game.compareBoards()) {
-    alert("You have won!");
+    if (confirm("You have solved the puzzle, would you like to play again?")) {
+        game.clearBoard();
+        game = new Sudoku();
+        console.log(game.user_board);
+    } else {
+        alert("Thanks for playing!");
+    }
     
 } else {
-    alert("Incorrect!");
+    alert("Review the red squares for mistakes!");
 }
     
 });
@@ -140,6 +164,10 @@ console.log("You cheater!");
 
 play_button.addEventListener("click", function(clickEvent) {
 
+    instructions.classList.add("hidden");
+    game_div.classList.remove("hidden");
+    validate_button.classList.remove("hidden");
+    solve_button.classList.remove("hidden");
     game = new Sudoku();
 
 });

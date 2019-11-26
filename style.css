@@ -9,6 +9,10 @@
     overflow: hidden;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 
 colgroup {
     border: 3px solid black;
