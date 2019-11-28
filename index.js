@@ -14,13 +14,17 @@ let solve_button = document.getElementById("button-solve");
 let inputs = game_board.getElementsByTagName("input");
 let instructions = document.getElementById("instructions");
 let game_div = document.getElementById("div_game");
+let novice_button = document.getElementById("button-novice");
+let intermediate_button = document.getElementById("button-intermediate");
+let expert_button = document.getElementById("button-expert");
+let difficulty_selection = document.getElementById("div_selection");
 let game;
 
 
 
 class Sudoku {
 
-    boards = 
+    novice_boards = 
     [
         ["","","9","","","","4","",""],
         ["","","","","6","4","","5",""],
@@ -33,7 +37,32 @@ class Sudoku {
         ["","","6","","","","1","",""]
     ]
 
-   solution = 
+    // 
+    intermediate_boards = [
+        ["2", "", "3", "", "", "4", "", "8", ""],
+        ["", "7", "", "3", "", "", "6", "", ""],
+        ["8", "", "", "", "5", "1", "", "", ""],
+        ["4", "", "9", "", "", "", "", "3", ""],
+        ["", "", "1", "", "", "", "8", "", ""],
+        ["", "8", "", "", "", "", "4", "", "6"],
+        ["", "", "", "8", "1", "", "", "", "2"],
+        ["", "", "5", "", "", "7", "", "6", ""],
+        ["", "3", "", "9", "", "", "5", "", "4"]
+    ]
+
+    expert_boards = [
+        ["", "", "", "2", "", "", "", "", "3"],
+        ["7", "4", "", "", "3", "", "9", "8", ""],
+        ["", "", "2", "9", "", "", "", "", "6"],
+        ["", "6", "", "", "", "", "4", "", "7"],
+        ["", "", "", "", "6", "", "", "", ""],
+        ["5", "", "8", "", "", "", "", "3", ""],
+        ["2", "", "", "", "", "6", "3", "", ""],
+        ["", "5", "3", "", "7", "", "", "6", "1"],
+        ["9", "", "", "", "", "5", "", "", ""]
+    ]
+
+   easy_solutions = 
     [
     ["3","6","9","1","2","5","4","7","8"],
     ["1","8","7","9","6","4","2","5","3"],
@@ -46,6 +75,31 @@ class Sudoku {
     ["8","9","6","2","5","3","1","4","7"]
     ]
 
+    // 213674985574389621896251743459168237361742859782593416647815392925437168138926574
+    intermediate_solutions = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+    ]
+    // 689247513745631982132958746361892457497563128528714639274186395853479261916325874
+    expert_solutions = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+    ]
+
     user_board = [[],
         [],
         [],
@@ -56,13 +110,34 @@ class Sudoku {
         [],
         []]
     
-    constructor() {
 
+    board_difficulty;
+
+    constructor(difficulty) {
+        this.board_difficulty = difficulty;
         // initialize game board
-        for (var i = 0; i < game_board.rows.length; i++) {
-            for (var x = 0; x < game_board.rows[i].cells.length; x++) {
-                if (this.boards[i][x] != "") {
-                    game_board.rows[i].cells[x].innerHTML = this.boards[i][x];
+        if (this.board_difficulty == "novice") {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.novice_boards[i][x] != "") {
+                        game_board.rows[i].cells[x].innerHTML = this.novice_boards[i][x];
+                    }
+                }
+            }
+        } else if (this.board_difficulty == "intermediate") {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.intermediate_boards[i][x] != "") {
+                        game_board.rows[i].cells[x].innerHTML = this.intermediate_boards[i][x];
+                    }
+                }
+            }
+        } else {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.expert_boards[i][x] != "") {
+                        game_board.rows[i].cells[x].innerHTML = this.expert_boards[i][x];
+                    }
                 }
             }
         }
@@ -72,26 +147,47 @@ class Sudoku {
         this.user_board.length = 0;
         for (var i = 0; i < game_board.rows.length; i++) {
             for (var x = 0; x < game_board.rows[i].cells.length; x++) {
-                game_board.rows[i].cells[x].innerHTML = "";
+                game_board.rows[i].cells[x].innerHTML = "<input type = 'text' maxlength = 1 autocomplete='off'>";
             }
         }
     }
 
 
-    // TODO
     solvePuzzle() {
          
-        for (var i = 0; i < game_board.rows.length; i++) {
-            for (var x = 0; x < game_board.rows[i].cells.length; x++) {
-                if (this.boards[i][x] != "") {
-                    game_board.rows[i].cells[x].innerHTML = this.solution[i][x];
-                } else {
-                    game_board.rows[i].cells[x].children[0].value = this.solution[i][x];
+        if (this.board_difficulty == "novice") {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.novice_boards[i][x] != "") {
+                        game_board.rows[i].cells[x].innerHTML = this.easy_solutions[i][x];
+                    } else {
+                        game_board.rows[i].cells[x].children[0].value = this.easy_solutions[i][x];
+                    }
+                }
+            }
+        } else if (this.board_difficulty == "intermediate") {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.intermediate_boards[i][x] != "") {
+                        game_board.rows[i].cells[x].innerHTML = this.intermediate_solutions[i][x];
+                    } else {
+                        game_board.rows[i].cells[x].children[0].value = this.intermediate_solutions[i][x];
+                    }
+                }
+            }
+        } else {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.expert_boards[i][x] != "") {
+                        game_board.rows[i].cells[x].innerHTML = this.expert_solutions[i][x];
+                    } else {
+                        game_board.rows[i].cells[x].children[0].value = this.expert_solutions[i][x];
+                    }
                 }
             }
         }
 
-        this.compareBoards();
+        this.compare_boards();
 
         if (confirm("You took the easy road, would you like to play again?")) {
             this.clearBoard();
@@ -102,34 +198,87 @@ class Sudoku {
 
     }
 
-    compareBoards() {
+    compare_boards() {
 
         let solved = true;
 
-        // Gather all user inputs to the user_board array
-        for (var i = 0; i < game_board.rows.length; i++) {
-            for (var x = 0; x < game_board.rows[i].cells.length; x++) {
-                if (this.boards[i][x] != "") {
-                    this.user_board[i][x] = game_board.rows[i].cells[x].innerHTML;
-                } else {
-                    this.user_board[i][x] = game_board.rows[i].cells[x].children[0].value;
+        if (this.board_difficulty == "novice") {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.novice_boards[i][x] != "") {
+                        this.user_board[i][x] = game_board.rows[i].cells[x].innerHTML;
+                    } else {
+                        this.user_board[i][x] = game_board.rows[i].cells[x].children[0].value;
+                    }
                 }
             }
-        }
-    
-    
-        for (var x = 0; x < this.user_board.length; x++) {
-            for (var y = 0; y < this.user_board[x].length; y++) {
-                if (this.user_board[x][y] == this.solution[x][y]) {
-                    if (game_board.rows[x].cells[y].className == "incorrect") {
-                        game_board.rows[x].cells[y].className = "";
-                        game_board.rows[x].cells[y].children[0].className = "";
-                    } 
-                } else {
-                    game_board.rows[x].cells[y].className = "incorrect";
-                    game_board.rows[x].cells[y].children[0].className = "incorrect-input";
-                    solved = false;
-                }        
+        
+        
+            for (var x = 0; x < this.user_board.length; x++) {
+                for (var y = 0; y < this.user_board[x].length; y++) {
+                    if (this.user_board[x][y] == this.easy_solutions[x][y]) {
+                        if (game_board.rows[x].cells[y].className == "incorrect") {
+                            game_board.rows[x].cells[y].className = "";
+                            game_board.rows[x].cells[y].children[0].className = "";
+                        } 
+                    } else {
+                        game_board.rows[x].cells[y].className = "incorrect";
+                        game_board.rows[x].cells[y].children[0].className = "incorrect-input";
+                        solved = false;
+                    }        
+                }
+            }
+        } else if (this.board_difficulty == "intermediate") {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.intermediate_boards[i][x] != "") {
+                        this.user_board[i][x] = game_board.rows[i].cells[x].innerHTML;
+                    } else {
+                        this.user_board[i][x] = game_board.rows[i].cells[x].children[0].value;
+                    }
+                }
+            }
+        
+        
+            for (var x = 0; x < this.user_board.length; x++) {
+                for (var y = 0; y < this.user_board[x].length; y++) {
+                    if (this.user_board[x][y] == this.intermediate_solutions[x][y]) {
+                        if (game_board.rows[x].cells[y].className == "incorrect") {
+                            game_board.rows[x].cells[y].className = "";
+                            game_board.rows[x].cells[y].children[0].className = "";
+                        } 
+                    } else {
+                        game_board.rows[x].cells[y].className = "incorrect";
+                        game_board.rows[x].cells[y].children[0].className = "incorrect-input";
+                        solved = false;
+                    }        
+                }
+            }
+        } else {
+            for (var i = 0; i < game_board.rows.length; i++) {
+                for (var x = 0; x < game_board.rows[i].cells.length; x++) {
+                    if (this.expert_boards[i][x] != "") {
+                        this.user_board[i][x] = game_board.rows[i].cells[x].innerHTML;
+                    } else {
+                        this.user_board[i][x] = game_board.rows[i].cells[x].children[0].value;
+                    }
+                }
+            }
+        
+        
+            for (var x = 0; x < this.user_board.length; x++) {
+                for (var y = 0; y < this.user_board[x].length; y++) {
+                    if (this.user_board[x][y] == this.expert_solutions[x][y]) {
+                        if (game_board.rows[x].cells[y].className == "incorrect") {
+                            game_board.rows[x].cells[y].className = "";
+                            game_board.rows[x].cells[y].children[0].className = "";
+                        } 
+                    } else {
+                        game_board.rows[x].cells[y].className = "incorrect";
+                        game_board.rows[x].cells[y].children[0].className = "incorrect-input";
+                        solved = false;
+                    }        
+                }
             }
         }
 
@@ -140,7 +289,7 @@ class Sudoku {
 
 validate_button.addEventListener("click", function(clickEvent) {
 
-if (game.compareBoards()) {
+if (game.compare_boards()) {
     if (confirm("You have solved the puzzle, would you like to play again?")) {
         game.clearBoard();
         game = new Sudoku();
@@ -164,10 +313,38 @@ console.log("You cheater!");
 
 play_button.addEventListener("click", function(clickEvent) {
 
+
+    difficulty_selection.classList.remove("hidden");
     instructions.classList.add("hidden");
+
+});
+
+novice_button.addEventListener("click", function(clickEvent) {
+
+    difficulty_selection.classList.add("hidden");
     game_div.classList.remove("hidden");
     validate_button.classList.remove("hidden");
     solve_button.classList.remove("hidden");
-    game = new Sudoku();
+    game = new Sudoku("novice");
+
+});
+
+intermediate_button.addEventListener("click", function(clickEvent) {
+
+    difficulty_selection.classList.add("hidden");
+    game_div.classList.remove("hidden");
+    validate_button.classList.remove("hidden");
+    solve_button.classList.remove("hidden");
+    game = new Sudoku("intermediate");
+
+});
+
+expert_button.addEventListener("click", function(clickEvent) {
+
+    difficulty_selection.classList.add("hidden");
+    game_div.classList.remove("hidden");
+    validate_button.classList.remove("hidden");
+    solve_button.classList.remove("hidden");
+    game = new Sudoku("expert");
 
 });
