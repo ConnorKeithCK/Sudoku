@@ -9,6 +9,43 @@
     overflow: hidden;
 }
 
+#instructions {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 60%;
+    font-size: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#div_selection {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+#button-novice {
+    font-size: 4em;
+}
+
+#button-intermediate {
+    font-size: 4em;
+}
+
+#button-expert {
+    font-size: 4em;
+}
+
+#button-play {
+    font-size: 4em;
+    border: none;
+    background-color: green;
+}
+
 .hidden {
     visibility: hidden;
 }
