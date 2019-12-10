@@ -9,6 +9,10 @@
     overflow: hidden;
 }
 
+body {
+    background-color: lightskyblue;
+}
+
 #instructions {
     margin-left: auto;
     margin-right: auto;
@@ -30,14 +34,20 @@
 
 #button-novice {
     font-size: 4em;
+    background-color: lightgreen;
+    margin: .25em;
 }
 
 #button-intermediate {
     font-size: 4em;
+    background-color: orangered;
+    margin: .25em;
 }
 
 #button-expert {
     font-size: 4em;
+    background-color: lightcoral;
+    margin: .25em;
 }
 
 #button-play {
@@ -64,7 +74,22 @@ td {
     width: 1.5em;
     font-size: 1.5em;
     font-weight: bolder;
-    color: blue;
+    color: crimson;
+}
+
+#controls {
+    text-align: center;
+    margin: 2em;
+}
+
+#button-validate {
+    font-size: 2em;
+    background-color: crimson;
+}
+
+#button-solve {
+    background-color: crimson;
+    font-size: 2em;
 }
 
 tr:first-child {
@@ -96,6 +121,7 @@ input {
     width: 1.5em;
     font-size: 1.5em;
     font-weight: bolder;
+    background-color: lightskyblue;
 }
 
 .incorrect {

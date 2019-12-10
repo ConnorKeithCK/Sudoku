@@ -315,6 +315,7 @@ play_button.addEventListener("click", function(clickEvent) {
 
     difficulty_selection.classList.remove("hidden");
     instructions.classList.add("hidden");
+    difficulty_selection.parentNode.insertBefore(difficulty_selection, difficulty_selection.previousElementSibling);
 
 });
 
@@ -324,6 +325,7 @@ novice_button.addEventListener("click", function(clickEvent) {
     game_div.classList.remove("hidden");
     validate_button.classList.remove("hidden");
     solve_button.classList.remove("hidden");
+    game_div.parentNode.insertBefore(game_div, instructions.previousElementSibling);
     game = new Sudoku("novice");
 
 });
@@ -334,6 +336,7 @@ intermediate_button.addEventListener("click", function(clickEvent) {
     game_div.classList.remove("hidden");
     validate_button.classList.remove("hidden");
     solve_button.classList.remove("hidden");
+    game_div.parentNode.insertBefore(game_div, instructions.previousElementSibling);
     game = new Sudoku("intermediate");
 
 });
@@ -344,6 +347,7 @@ expert_button.addEventListener("click", function(clickEvent) {
     game_div.classList.remove("hidden");
     validate_button.classList.remove("hidden");
     solve_button.classList.remove("hidden");
+    game_div.parentNode.insertBefore(game_div, instructions.previousElementSibling);
     game = new Sudoku("expert");
 
 });
