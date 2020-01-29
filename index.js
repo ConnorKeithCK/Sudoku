@@ -7,6 +7,8 @@ TODO:
 */
 
 
+// Hey Jake
+
 let game_board = document.getElementById("board");
 let play_button = document.getElementById("button-play");
 let validate_button = document.getElementById("button-validate");
